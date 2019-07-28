@@ -23,6 +23,9 @@ Business Sense (business questions): fraud高发期，例如
 7. 实验设计
 
 
+## C1 cases
+
+> C1 cases 
 
 Business Cases:
 
