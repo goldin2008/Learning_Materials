@@ -87,6 +87,15 @@ AUC ROC
 问：mapReduce的话，map function和reduce function的pysdo code收一下？
 答：先每个partition上去unique，再reduce到master node上去unique。。。
 
+一面，business case, 面试官在总部，干了十几年，居然给我讲他中间也想过要跳槽，可是后来都没有。。。。不知道为啥要和我讲这个。开始15分钟behavor, 问最近犯的错，之后是case, 一个巴西超市要发credit card, 首先问credit card可能的revenue/cost来源， 之后问要break even的话， market share是多少，面试官不会给你全部数据， 你需要自己定义market share是什么， 有可能是营业额， 有可能是多少张卡， 不同的定义需要的数据不同， 我说我选# of cards，然后我说我需要全巴西有多少张卡，巴西有多少成年人， 成年人中有多少人是credit worthy, 之后他就给了我， 然后就很快算出来，之后又有很多follow up，只记得一个是怎么提高revenue云云， 反正第一面面试的很愉快。
+
+之后第二面就是在那里break一小时。
+
+第三面是另一个面试官，也是远程，问了一个游乐园的问题，首先分析游乐园的收益与成本来源， 之后给你一张纸，上面是有点像income balance sheet， 一个一个计算各种各样的item， 然后面试官各种update信息，给新的senario,然后你就要重新update balance sheet上的所有计算， 真阳大概来回了三四个senario, update 三四次所有的计算， 之后根据计算问很多folllow up，我计算的时候大概犯了一两个小错误， 面试官都提醒然后我很快改正。感觉capital one对于计算的要求很高，你需要脑子时刻保持清醒，最好不要犯太多错，你保持任何答案之前一定要想一想这是不是对的，不要想都不想就说。
+第四面是role play， 说烂了，因为我平时给很多给不懂tech的人做类似的presentation所以很轻松的通过啦，我补充一下其他人没说过的， role play 主要是要记住时刻为客户着想，present的时候不要一直想着自己说，多问问他有什么问题，听懂了没有， 这样可以显示你为客户着想的一面，我觉得这个挺重要的。
+
+最后一面 是tech， 问了一些基本公式的推到， 一些statistical tests，还有distribution的问题， 包括应用，还有一些ML模型的原理
+
 ## Algorithm Study
 
 http://www.hawstein.com/archive.html
