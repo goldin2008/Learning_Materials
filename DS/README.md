@@ -27,6 +27,28 @@ case 1:  add a mobile feature: check deposit因为在chase app上用过这个功
 Case2: small business loan, 计算不难，最后一个讨论感觉答得不算特别好，问你有三个产品，A跟C 是C1 partner with others, B是C1独自推出的，A每年固定revenue 1M(数字记不清了）， B第一年loss 6M, 往后每年4M revenue, C第一年loss 10M, 往后每年6M revenue, 选哪个产品
 Data Challenge: 面试官会要看code, 对data quality部分比较感兴趣，有夸我这部分做的好，会根据你做的东西随机follow up
 
+case：credit card churn model to predict whether user will close the account and will increase cash back reward for those who may close. A total of 4 million rows of data including date, purchase amount, type of store...
+1. Q: How would learn about the data(好像是）?
+  (瞎说的) Exploratory Analysis?...
+2. Q: How would you handle missing data?
+Either Delete(row wise/ column wise and assumptions) or Impute(categorical: mode, as a level, logistic ; Continuous: mean, median, linear,0... )
+3. feature engineering
+4. (big data) what would you do if the data is updated hourly
+后来问了面试官 好像意思要注意computation complexity
+5. What if we have several years of data?
+Hadoop MapReduce
+6. What if only one computer or a single node is given
+上个回复补充说了 但是不确定
+7. What model would you use?
+GBDT, RF, but also try other methods like LR
+8. what language/lib will you use if data is like 1G
+python/sklearn (稍微提了下 特别大会用spark 不知道对不对）
+9. How to evaluate
+AUC ROC
+10. 如果模型结果不太好对business会有什么影响
+11. 然后就是的5000 credit limit， 使用率相差很大的问题， 100% 和2%
+
+
 
 
 先说一下自己的情况，本人主要面Data Science analytics职位，做过的题目基本都是简单的模型+如何做AB test+如何做产品改善推荐这种类型的题目。不是machine learning相关的职位。做过湾区多家热门独角兽公司的data challenge，之前每战必败，现在通过率100%。做多了发现都是套路，所以希望自己的经验可以帮助在寻找data方面工作的战友们
