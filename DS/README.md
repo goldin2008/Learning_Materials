@@ -171,6 +171,12 @@ contractor 每小时工资$24，
 
 需要注意的点大概就是，算数的时候记得讲出来，一步一步来不要跳。我做第一个 Case 的时候由于精神涣散，算数的时候都没有讲话。。。后来中间休息的时候调整了一下，第二个 Case 计算的时候效果就好很多。
 
+我的onsite一共6轮，business case是一道卖酒题，假设你是老板，告诉你revenue，cost, 和gross margin, 让你算profit。我刚开始不懂gross margin，经过考官提醒用gross margin要算production cost, 最后把profit算出来。然后问你如果你有竞争者，你会怎么办？之后再给你这个竞争商家的数据，问这个竞争商家哪个数字你觉得有问题？面试的时候我一个一个数字看，看了一轮没有发现问题，面露囧态，考官提醒我要看product cost, 好像答案是竞争商家的cost占比比咱家高，考官问他家为什么高？我说了一通，然后给我图表，让我算我可以增加多少marketing cost能够刺激sales，还让我假设如果打价格战，我能承受的损失。数一点不难，可是平时少有功夫琢磨business，问题虽都解出来了，但是一路靠考官指点，几次把我从天马行空乱吹拉回到正轨。
+-baidu 1point3acres
+quant case是两道概率题，掷骰子求期望，本科水平，但是概率论题目千变万化，每个人面试题目可能都不一样。
+
+role paly还是经典的飞机误点，发给你一堆slides, 把outlier, missing values, correlation, linear regression, logistic regression, p-value, r-squared, anova table概念搞透一点不难。考官要求说的时候用最简单的英语说，我就当他啥都不懂，一页一页slide和他解释每个图和数字分别代表什么。
+
 
 ## Algorithm Study
 
