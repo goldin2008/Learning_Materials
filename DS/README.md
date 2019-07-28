@@ -6,10 +6,15 @@
 5. 如何鉴别重要的变量
 6. 产品改进推荐：发现问题要对应给出可以做的后续策略，通过后续变量的结果来看是不是策略成功
 Business Sense: fraud高发期，例如
-(1) transaction时间是holiday\\
-(2) 大数额transaction比小的更重要\\
-(3) 整数额transaction用于买gift card\\
-(4) time是深夜\\
+
+(1) transaction时间是holiday
+
+(2) 大数额transaction比小的更重要
+
+(3) 整数额transaction用于买gift card
+
+(4) time是深夜
+
 
 7. 实验设计
 
