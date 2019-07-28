@@ -5,7 +5,7 @@
 4. 提取跟产品目标相关的变量
 5. 如何鉴别重要的变量
 6. 产品改进推荐：发现问题要对应给出可以做的后续策略，通过后续变量的结果来看是不是策略成功
-Business Sense: fraud高发期，例如
+Business Sense (business questions): fraud高发期，例如
 
 (1) transaction时间是holiday
 
