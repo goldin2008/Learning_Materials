@@ -15,6 +15,8 @@ Business Sense (business questions): fraud高发期，例如
 
 (4) time是深夜
 
+(5) ratio of balance/limit 来看是不是用的比例过高
+
 
 7. 实验设计
 
