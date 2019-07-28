@@ -17,6 +17,8 @@ Business Sense (business questions): fraud高发期，例如
 
 (5) ratio of balance/limit 来看是不是用的比例过高
 
+(6) metrics的确定，比如关注对那些大数额fraud是不是能找出来，而不是把不同数额的fraud同等对待
+
 
 7. 实验设计
 
