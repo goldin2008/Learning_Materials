@@ -84,6 +84,23 @@ AUC ROC
 问：mapReduce的话，map function和reduce function的pysdo code收一下？
 答：先每个partition上去unique，再reduce到master node上去unique。。。
 
+## Algorithm Study
+
+http://www.hawstein.com/archive.html
+
+> Dynamic Programming: From novice to advanced 
+
+http://www.hawstein.com/posts/dp-novice-to-advanced.html
+
+> STL
+
+http://www.hawstein.com/posts/a-byte-of-stl.html
+
+> GOOGLE JAVA/C++ style guide
+
+http://www.hawstein.com/posts/google-java-style.html
+
+http://www.hawstein.com/posts/google-cpp-style-guide.html
 
 
 先说一下自己的情况，本人主要面Data Science analytics职位，做过的题目基本都是简单的模型+如何做AB test+如何做产品改善推荐这种类型的题目。不是machine learning相关的职位。做过湾区多家热门独角兽公司的data challenge，之前每战必败，现在通过率100%。做多了发现都是套路，所以希望自己的经验可以帮助在寻找data方面工作的战友们
