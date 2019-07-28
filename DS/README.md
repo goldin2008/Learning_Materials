@@ -96,6 +96,82 @@ AUC ROC
 
 最后一面 是tech， 问了一些基本公式的推到， 一些statistical tests，还有distribution的问题， 包括应用，还有一些ML模型的原理
 
+我是面的SDE track，败在了case study，出了一个没见过的case，大致是给你一份信用卡账单，让你看有什么猫腻，答案是因为其他transaction都在VA，只有一笔是在三番，所以三番的可能是fraud，然后顺着这个思路，告诉你他们会接拿到其他公司的关于每一笔消费的明细来帮助确认是否真的是fraud，但是有成本，也不一定有帮助。现在有两个公司可以提供明细，他们的cost和准确率不一样，让你算一下用哪个公司比较划算，总之全程和编程无关，祝你好运
+
+Case
+可能是因为没睡饱，加上上一轮面试过于亢奋，这轮 Case 我处于一个全程精神涣散的状态。。。有时候甚至面试官在说什么我都没有听。。。
+Personalized Credit Card 的 Case， 之前地里有面经。
+C1想要增加一个服务，客户可以自行上传照片给自己的 profile，这样他们的卡上就会有这张照片（我十分怀疑面试官没说划线这句话，也可能是我漏听了。。。）
+问， C1为什么要这么做？
+注意划线那句话很重要，由于我没听到，导致我一直以为只是给客户的电子档案上传照片，答的就很不在点子上。。。
+后来面试官大概是听不下去了，就把答案说了一下。。。
+1、Fraud Detection 信用卡上的签名其实很不保险，但如果客户卡上有自己的头像的话，刷卡时候就更安全，因为对比一下真人和照片就可以立刻确定是不是盗刷。
+2、卡上有Personalized 的标志会让客户更愿意掏卡/秀卡 消费。。。
+Well...我个人觉得这就是强行找原因...因为我问面试官照片必须是头像吗还是什么照片都行，面试官说什么照片都行。那这两个原因就...自相矛盾嘛，加起来才是一个全集。【反正我是不会往卡上加自己头像的。。。
+接下来就是算算算了。
+先是一道 A 包含一部分 B，B 和 C 又有重合，问 A 和 C 重合有多少的那种题（真的记不起来了。。。）
+精神涣散如我，听到题直接懵逼。后来心想，这么简单的烂题答不出来你肯定就凉了，心一横，开始在面试官面前画集合图。。。然后答对了= =
+接下来开始做投放实验
+41K的 Control group 和 Treatment Group，给 Treatment Group 里的人发 email 通知新功能，5%的人会 response。
+Treatment Group 里 response 的人月消费600，没 response 的人月消费195
+Control Group 里的人月消费200。
+问，投放 email 前后，人均消费变化是多少。
+很简单，就算下 Treatment Group Weighted average 再减去200 就行了。
+
+接下来面试官问，那些没有 response 的人，在投放 email 之前的月消费是多少？
+精神涣散的我再次懵逼，直接答了200，面试官大概是觉得我没救了，走去白板那里开始给我讲解。。。
+5% *（average consumption before）+ 95% * x = 200, 195-x是答案。。。average consumption before 那个数我不记得了。。。Anyway 这个题我到现在也没太明白
+
+最后投放2 million email，response rate依然是5%
+Cost:
+$0.02/email
+$1/mail （意思是如果客户选择上传照片，新卡寄过来的费用）
+求 profit。
+
+
+Case
+这个也是地里的面经。你是一个公司的 manager，手下有三个人，分别负责 coding, testing, documentation。
+现在每2周固定产出1K lines code.
+有一天，一个潜在客户希望你们每2周给他们产出1K lines code，这样你们的产出量就会变成2K，问你可不可行，或者说你要考虑什么？
+答：我要知道每个人每2周最大产出量是多少，每个人的工资是多少，然后算下 profit。如果产出量达不到要求需要加班的话，我还得知道加班费，以及员工愿不愿意加班。
+面试官就给了数据。
+Producing Capability:
+Coding: 15 lines/h,
+Testing: 2 lines/5 mins
+documentation: 1 line/2 mins
+
+Salary:
+Working hours: $16/h
+Overtime: $24/h
+
+先算了下两周正常工作时间每个人的产出量，
+Coding 1.2K
+Testing 1.92K
+Documentation 2.4K
+
+我说最大产出量1.2K，正常工作时长满足不了客户要求。需要加班
+问：加多久
+答：Coding 53.333 h, Testing 3.333h。
+问：你觉得怎么样？
+回：这样 coding 的人平均一天加班4-5小时，这太多了。。。他/她肯定不会答应的
+问：那你觉得要怎么办
+回：Testing, Documentation的人肯定也都懂 code，让他们帮着写。。。
+问：不行，假装他们不会
+回：那我再雇一个写 code 的
+问：但这个客户不一定签我们，人雇好了，客户没了怎么办？再说还要培训，成本很高【？？？】
+见我懵逼，面试官说我们不招 fulltime，招个 contractor【。。。】
+contractor 每小时工资$24，
+然后算了下招人前后每生产1 line的 cost （也就是工资）是多少，前面3点几，后面2点几
+问：为啥招人之后反而每生产1 line 成本还下降了
+答：因为 testing, documentation两个人在生产1K lines只需要工作1周，剩下的一周相当于白付工资不干活儿。巴拉巴拉-baidu 1point3acres
+问：好了那你现在要跟大老板说这件事，你怎么说？
+答：要签这个客户。招个 contractor。钱多。
+面试官：不错，已经说得很好了，还可以补充的话就是，度过这两周之后，可以考虑招一个 full time，因为这样生产1 line 的成本会更低。
+我：。。。
+
+需要注意的点大概就是，算数的时候记得讲出来，一步一步来不要跳。我做第一个 Case 的时候由于精神涣散，算数的时候都没有讲话。。。后来中间休息的时候调整了一下，第二个 Case 计算的时候效果就好很多。
+
+
 ## Algorithm Study
 
 http://www.hawstein.com/archive.html
