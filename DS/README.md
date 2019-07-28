@@ -53,6 +53,37 @@ AUC ROC
 11. 然后就是的5000 credit limit， 使用率相差很大的问题， 100% 和2%
 
 
+面试官是一个在C1做了一年多的fraud方向的DS，之前背景偏business。
+
+首先上来介绍了一下自己的background，问了一下我的background，做过的project等。
+
+然后开始主要的Case Study。背景是每个月都有一部分人关信用卡，因为default所以被关卡的和主动关卡的，这里分析主要是主动关卡的。有两个table，一个是transaction table，包括transaction_id, time, store, cash back等。一个是card table, 包括customer_id, open_date, closed_date, card_it, credit_limit, accumulative_cash_back等。. 1point3acres
+
+问：现在想推出一个promotion target那些近期可能要关卡的用户，问怎么找出那些用户？应该采取什么措施？
+答：首先用classification model来predict出近期会关卡的用户，然后找出那些user有什么characters，相对应的分析原因，然后推出promotion，blah blah。。。. From 1point 3acres bbs
+
+问：现在发现有一些missing value，问怎么处理？
+答：根据missing value的数量和原因，要么drop要么infer。。
+(这里给大家推荐一篇blog：https://towardsdatascience.com/h ... g-data-8646b18db0d4
+当然我当时没答这么细，但大概意思是这样。。。)
+
+问：根据我们有的数据，你会用哪些variable做feature？
+答：从customer持卡的cost和benefit的角度出发，分析了一些variable，比如说activated的offer数量，近期要交的annual fee等等。。。
+
+问：怎么分析model的优劣？
+答：不能简单用accuracy，要结合misclassify customer的cost来取一个maximize我们profit的recall，specificity等。。。
+
+问：找出来那些customer之后，你怎么做promotion？. From 1point 3acres bbs
+答：先用clustering把customer segment一下， 然后再根据不同的客户采取相应的promotion。。。
+
+----------------------------case study结束----------------------------------------
+. 1point3acres
+问：我们有好几年（重点）的transaction data，怎么找出所有unique customer？
+答：data set如果还行不是特别大的话，可以上ec2开一个大instance。。如果实在是特别大的话，就用emr，mapReduce或者sparkSQL解决问题。。
+
+问：mapReduce的话，map function和reduce function的pysdo code收一下？
+答：先每个partition上去unique，再reduce到master node上去unique。。。
+
 
 
 先说一下自己的情况，本人主要面Data Science analytics职位，做过的题目基本都是简单的模型+如何做AB test+如何做产品改善推荐这种类型的题目。不是machine learning相关的职位。做过湾区多家热门独角兽公司的data challenge，之前每战必败，现在通过率100%。做多了发现都是套路，所以希望自己的经验可以帮助在寻找data方面工作的战友们
