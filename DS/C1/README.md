@@ -662,6 +662,107 @@ onsite是在2月下旬，纽约办公室，全天面试，早上8点半到，9�
 
 关于第二个问题，我建议你case的时候最好和interview 确认一下，一般请款下，apr就是年化率，这时候如果balance是恒定的，就不用乘12，premium是月支出，所以乘12，当然你一定要喝面试官确认。
 
+1. Case - ATM机profitability。有两种ATM, 一种银行内的，一种银行外的。cost有比如维修费新建设备费等，Revenue有interchange fee等，两种情况下分别算profit。数学部分很简单，但是千万别出错，而且一定要跟面试官保持良好的交流。也不要怕答错，就怕你不说话，如果答错面试官会给你合理的提示，你顺着他给的线索分析，当你看到他脸上微妙的围笑之后大概就能知道自己猜对了方向。
+2. Behavioral - 三个问题。Biggest challenge， 怎样说服他人，还有一个不好意思实在想不起来了。。不过他们都是很标准的tell me a time系列，没有意外的题目
+3. Case - 这个是我面试过程中最匪夷所思的一个了，完全get不到面试老头的点。。大概就是一个coding company，假设你是里面的一个manager，手下有三个人，有一个程序猿，一个测试的，一个负责document。告诉你他们的productivity，让你计算分析客户要在一周内产出2000行code可不可行，怎么样最优分配。这个计算几乎没怎么有，主要是business sense，也是我觉得最难的地方，勉强撑到最后。老头拿到我的笔记说了一句，that's highly organized。现在看来应该算是唯一的加分点吧。。惭愧
+4. job fitting - present之前做的data challenge project，然后回答他们提出的问题，就跟他们表明你的思路就好了。
+
+Here is one list of behavioral-based interview questions:
+Describe a situation in which you were able to use persuasion to successfully convince someone to see things your way.
+Describe a time when you were faced with a stressful situation that demonstrated your coping skills.
+Give me a specific example of a time when you used good judgment and logic in solving a problem.
+Give me an example of a time when you set a goal and were able to meet or achieve it.
+Tell me about a time when you had to use your presentation skills to influence someone opinion.
+Give me a specific example of a time when you had to conform to a policy with which you did not agree.
+Please discuss an important written document you were required to complete.
+Tell me about a time when you had to go above and beyond the call of duty in order to get a job done.
+Tell me about a time when you had too many things to do and you were required to prioritize your tasks.
+Give me an example of a time when you had to make a split second decision.
+What is your typical way of dealing with conflict? Give me an example.
+Tell me about a time you were able to successfully deal with another person even when that individual may not have personally liked you (or vice versa).
+Tell me about a difficult decision you have made in the last year.
+Give me an example of a time when something you tried to accomplish and failed.
+Give me an example of when you showed initiative and took the lead.
+Tell me about a recent situation in which you had to deal with a very upset customer or co-worker.
+Give me an example of a time when you motivated others.
+Tell me about a time when you delegated a project effectively.
+Give me an example of a time when you used your fact-finding skills to solve a problem.
+Tell me about a time when you missed an obvious solution to a problem.
+Describe a time when you anticipated potential problems and developed preventive measures.
+Tell me about a time when you were forced to make an unpopular decision.
+Please tell me about a time you had to fire a friend.
+Describe a time when you set your sights too high (or too low).
+
+言归正传，onsite一共五轮，上午俩case，一个role play，一个behavioral。下午一个返场技术面聊你的data science challenge。
+
+我的第一个case是关于pricing的，这也是我今天唯一的得意之作，和面试官互动的很不错，开放的问题都能够有来有回思想交锋。
+
+至于具体的计算部分算是两个经典例子的合体吧，大家去翻翻未名空间，找找一个利率的case和一个phone vs email的case。具体来说我们有仨策略，发邮件请人办信用卡，但offer三种不同利率，那么会对应三种不同的respond rate，以及三个不同的客户average balance，请分别算利润。之后又说可能现在duration会不同，再分别算利润，然后default rate也会有所不同，又分别算利润。层层推进的时候会伴随着开放的问题引导你，这就看你的business sense了，能不能即使抓到他的思路。
+
+
+
+相似的，我的另一个case是关于autoloan的，这回我在开放题部分就做的超级差，根本不造老哥想把我的思路引导去哪里。至于计算部分是这样，真。坏人的概率是3%，而我们的模型预测出总人口里面5%是“坏人”，其中，里面有15%是真。坏人，然后让你算了两个条件概率，反正活用贝叶斯公式，条件概率公式，全概率公式就能够顺利做出（据说算不出直接挂），事后我想到的最方便的办法其实是做个2*2列联表，然后把四个交叉概率算出来，然后要啥条件概率一步就有。因为这一关里面，面试官总是费了九牛二虎之力才把我引进下一个话题，估计我在他心里印象一定有个nerdy的标签吧，所以我觉得自己完成的很差。不过没关系，哥们上一关做的更差。
+
+也就说在两个case之间，我完成了经典的role play问题，飞机晚点，具体问题大家可以去查一下未名空间，总之有个线性回归模型（也可以选决策树）来分析飞机为什么晚点，看完材料以后跟客户提建议，之后客户化身专业人士深入聊。我在内容处理上主要犯了俩大毛病，一是时间没安排好，15分钟里面刚刚看完材料，根本没时间总结，另外在展示上，我没有很好的区分给客户讲和给专业人士讲的分别，因为之前看了很多经验都是讲第二部分模型问题的，所以注意力全在挑毛病上面了，没能够先简要总结现有模型。另外展示还犯了三个毛病，互动交流不够，没给客户看ppt，老转笔（哥们这不是虚的么），这都是后来他们反馈我的，哎，引以为戒，下次做好吧。具体来说模型的问题在于，模型选择不当（应为分类器而非回归），数据清理，week of day处理不当，correlation严重，起降地没有被考虑，温度这个变量没啥用等。另外问了你r square 和adjusted r square是啥，p value，为什么r square低，共线性怎么处理等等。另外有一些现象出现的原因你要会和实际结合起来。总之这一轮结束我就觉得自己已经走远了其实，人生的大起大落就是这么快。
+
+上午最后一波是behavioral，这个还好，之前给过你一个单子，照着准备就是，都是tell me a time系列的。对方明确表示要遵循star原则。建议大家还是要勤练，多练几遍不吃亏，我就是总想着准备几个案例到处套，其实现场表达的不太好。
+
+吃完午饭逛了一圈以后，下午最后来了一轮tech，一据说教授出身的大boss跟我聊了我做的data science challenge，比我想象的好，就围绕着我用的模型描述比较了一番，因为这哥们好像就是负责发明和测试各种666的模型的。我在project里用的都是经典的随机森林，boosting和ANN，稍微聊了聊我对这些模型的理解和实际跑的效果就过去了，本来为了准备前一天还看了CNN，RNN，rule ensemble什么的，当时或许应该强行加一句，我觉得其实可以再试试xxx模型。另外
+因为我提到了rspark包，所以他问我懂不懂spark，我就老实说，只在其他平台上调用过，spark具体结构和原理不太懂。另外最后我强行拉住他让他听我讲我在bonus部分做的傅立叶变换预测模型，想忽悠他一波，
+
+听完后他一句请说说你的结果有哪些实际应用又把我噎回去了。总之这一轮也算我表现还行的一轮了，他当场说我对模型理解不错，不但会用还懂原理，认为我有做ds的素质（也不知是不是对谁都这么说），让我不管结果怎么样加他一下linkedin（这时候我感觉自己应该是没戏了），欢迎随时问他问题。
+
+总之大致就是这样，面完以后很快推我的哥们（再次衷心感谢他一下）就告诉我role play挂了，表达问题很大，然后普遍认为我数学统计过硬，商业sense不够。结果也算在意料之中吧，起码组委会还讨论了一下我的去留，可能普遍觉得我硬功夫还行吧，最后没要我看来也是软实力短板实在太严重了。另外俩印哥哥直接挂在case上也是让我出乎意料，我还以为他们会输在表达，因为英语真的有够烂，结果表达不好的反而是我自己😂。。。按照内部人士说法，我起码让组委会审核了一波，所以也算小胜他们为国争光了（强行吹逼一波）。
+. From 1point 3acres bbs
+总之以上就是我的经验与大家分享，希望大家不要犯我的错误，既能算对题，也能讲明白case，软硬功夫两手抓。另外推荐一下youtube上一个教case interview的教程，好像叫MConsulting，适合哥们这样的商业分析小白。
+
+虽然和幻想中的principal data scientist职位失之交臂有点可惜，不过想到郭德纲说的话，成事得靠三分能耐，六分运气，一分贵人扶持，如今虽有贵人扶持，无奈自己实力不济，也怪不得时乖运蹇。求职之路漫漫，大不了总结教训再战一波。雄关漫道真如铁，而今迈步从头越！
+
+题目是有一个运动产品的零售商，来找你优化他们的在线广告竞拍系统，提高response rate。假设你有的数据是3, 000, 000用户的访问数据，每行数据有150多个column，已知overall的response rate是1/1000。
+被问的问题有：
+1. 选什么作为target？
+Response or not
+2. 选什么metrics?. 1point3acres
+AUC-ROC
+3. 怎么处理NA? 
+It depends. If NA is meaningful, leave it there. If NA is missing due to data extracation, do some simple if-else condition/mean(median)/regression to fill
+4. 怎么做feature engineering? . check 1point3acres for more.
+Encode categorical varaible, use 'groupby' and 'mean/medium/std' to generate some features
+4. 数据量特别大怎么办？
+mapreduce，但是我没用过，就拿本地并行优化举了个例子，怎么分配数据给各个线程，然后怎么把数据收回来合并。
+5. 模型用什么？
+GBDT，lightGBM/XGB
+6. 怎么评估模型表现？
+k-fold CV
+7. Overfitting/underfitting怎么办？
+分别讨论了一下。想办法获取更多的数据，调整hyper-parameter。
+8. 如果模型预测出了问题，会有什么影响？
+分情况讨论了一下整体上会有什么变化，对单个用户有什么影响。
+
+1.        你会选哪些feature？（感觉是随便说，只要有关系。追问如果是一堆transaction的日期之类的，应该怎样rebuild feature）
+2.        怎么做data cleaning： 
+    a.            怎样detect outlier？
+    b.            怎样fill in missing data？(我说可以填constant比如mean，然后他追问填mean在什么情况下不合适、怎样更好)
+    c.            如果target value也missing了怎么办
+3.        你选什么model？(我说decision tree，然后他让我说有没有其他model，优缺点分别是什么，target是什么。target应该是一个binary的值whether the customer will close the account in one month，如果regression得到了0~1之间的值就代表how likely)
+4.        怎么看model 的performance，用什么package
+5.        如果data size很大有1TB，怎样sample，用什么package
+6.        如果model不准确，会给银行造成什么损失？
+7.        如果用model predict得到了一堆target的值，应该怎样根据target发rewards (我说画个distribution，给最可能关户的百分之几客户发rewards。追问除了这种方式还有什么方式，我也不确定是考modeling还是business sense). check 1point3acres for more.
+8.        最后一个是地里看到的一模一样的open question，两人都有5000limit，但是一个用100%一个只用2%，这两人有没有可能都在一月之内关户。面试官应该看你第一反应是考虑model的问题还是考虑其他方面。
+
+case interview 是关于life insurance的，之前地里有人提过。先问你对insurance了解有多少，如果你是manager，为了考虑到顾客死亡的概率 你会收集哪些顾客的信息。然后就是计算的部分了，很简单小学数学题。算达到break－even的死亡的概率是多少。然后面试官画了一个柱状图，有四个组，分别代表high risk low risk，median high 和 median low， 柱状图给出每组的死亡概率，然后有四种方案，1:全包括，2:只包括low risk，3:包括low 和median low 4:包括low, mdiean low 和 median high 问你会选哪个方案（假设每个组的人数一样）。如果想更赚钱你会怎么做。最后是opening question，如果你想去predict 死亡的概率 你会用什么方法，为什么。
+
+role play 还是flight delay的题，地里已经讲的很详细了。这个大家要好好准备，15分钟看report时间还是有点紧的，要想好如何和一个non-statistian交流
+
+behavior interview： 三个问题 每个问题都会根据你的回答有follow－up question。 1，challenge task  2，persuade someone. 3，deal with changing objectives in your project。
+
+1. 简历问题，问的非常细致，我之前做过一个推荐系统，这个面试官对这一块非常擅长，所以问得很细很专业，我没答好，加上一开始的确听不懂。所以建议大家可以先linkedin面试官，看看他擅长什么，我遇到过几次面试官喜欢问自己擅长的东西。
+2. 一个超市，有100个顾客的list，
+70个男的，30个女的，如果用这个数据做数据分析会有什么statistical issues，问这个100个顾客会是什么样的distribution
+3. walk through一个mapreduce问题，一组数据，四个columns: name, category, # of transactions in 2014, dollar values of transaction in 2014，需要知道每个category的average dollar values per transaction，怎么用mapreduce做，其实就specify一下mapper和reducer的input和output，然后在reducer里求一下平均值什么的。
+
+
 
 ## Algorithm Study
 
