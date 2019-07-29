@@ -700,7 +700,6 @@ Describe a time when you set your sights too high (or too low).
 至于具体的计算部分算是两个经典例子的合体吧，大家去翻翻未名空间，找找一个利率的case和一个phone vs email的case。具体来说我们有仨策略，发邮件请人办信用卡，但offer三种不同利率，那么会对应三种不同的respond rate，以及三个不同的客户average balance，请分别算利润。之后又说可能现在duration会不同，再分别算利润，然后default rate也会有所不同，又分别算利润。层层推进的时候会伴随着开放的问题引导你，这就看你的business sense了，能不能即使抓到他的思路。
 
 
-
 相似的，我的另一个case是关于autoloan的，这回我在开放题部分就做的超级差，根本不造老哥想把我的思路引导去哪里。至于计算部分是这样，真。坏人的概率是3%，而我们的模型预测出总人口里面5%是“坏人”，其中，里面有15%是真。坏人，然后让你算了两个条件概率，反正活用贝叶斯公式，条件概率公式，全概率公式就能够顺利做出（据说算不出直接挂），事后我想到的最方便的办法其实是做个2*2列联表，然后把四个交叉概率算出来，然后要啥条件概率一步就有。因为这一关里面，面试官总是费了九牛二虎之力才把我引进下一个话题，估计我在他心里印象一定有个nerdy的标签吧，所以我觉得自己完成的很差。不过没关系，哥们上一关做的更差。
 
 也就说在两个case之间，我完成了经典的role play问题，飞机晚点，具体问题大家可以去查一下未名空间，总之有个线性回归模型（也可以选决策树）来分析飞机为什么晚点，看完材料以后跟客户提建议，之后客户化身专业人士深入聊。我在内容处理上主要犯了俩大毛病，一是时间没安排好，15分钟里面刚刚看完材料，根本没时间总结，另外在展示上，我没有很好的区分给客户讲和给专业人士讲的分别，因为之前看了很多经验都是讲第二部分模型问题的，所以注意力全在挑毛病上面了，没能够先简要总结现有模型。另外展示还犯了三个毛病，互动交流不够，没给客户看ppt，老转笔（哥们这不是虚的么），这都是后来他们反馈我的，哎，引以为戒，下次做好吧。具体来说模型的问题在于，模型选择不当（应为分类器而非回归），数据清理，week of day处理不当，correlation严重，起降地没有被考虑，温度这个变量没啥用等。另外问了你r square 和adjusted r square是啥，p value，为什么r square低，共线性怎么处理等等。另外有一些现象出现的原因你要会和实际结合起来。总之这一轮结束我就觉得自己已经走远了其实，人生的大起大落就是这么快。
@@ -761,6 +760,71 @@ behavior interview： 三个问题 每个问题都会根据你的回答有follow
 2. 一个超市，有100个顾客的list，
 70个男的，30个女的，如果用这个数据做数据分析会有什么statistical issues，问这个100个顾客会是什么样的distribution
 3. walk through一个mapreduce问题，一组数据，四个columns: name, category, # of transactions in 2014, dollar values of transaction in 2014，需要知道每个category的average dollar values per transaction，怎么用mapreduce做，其实就specify一下mapper和reducer的input和output，然后在reducer里求一下平均值什么的。
+
+Case Study：
+计算条件概率。经典的bayes formula计算conditional probability。. check 1point3acres for more.
+
+Role Play:
+经典题，flight delay问题。我选的是用decision tree分析，可能在role play的时候条理不够清晰吧。关于模型的问题，主要是variable definition，还有misinput value，比如说# seat 不可能有-1这种数值。还有一点是target variable是delay的时间，因为manager关心delay是否大于8分钟，所以在define target avariable的时候，个人觉得应该把delay按照8分钟来分0,1两个数值。最后的模型ROC的值只有0.58，不到0.7，这就比较低了。
+
+Behavior：
+1. Tell me a time when you have to persuade someone.
+2. Tell me a time you have to adapt to a changing environment.
+3. Tell me a time when you have to complete a challenging task.
+
+他们家题目的topic万年不变的，地里能找到，我在Plano面的是
+
+Case interview：autoloan，会问revenue和cost有包括哪些，然后告诉你有一个已有的模型，让算算条件概率，然后问你这个模型好不好，然后如果让你重新设计一个模型，该怎么做。其实这个case已经用了好多好多遍了，但是感觉每次大家被问到的小问题还是不太一样
+
+Role play: flight delay的prediction，有regression model和random forest两个可选，会给很多各种图表。跟别的面经里一样的，这个千万多练练…
+
+Behavior question: 三个tell me a time，大概一个是most challenge，一个说服别人，还有一个怎么应对changing objective。把glassdoor和地里的面经都看一遍应该就没问题了
+
+这个问题之前是 假设P(True bad customer) = 3%, P(predicted bad) = 5%, P(True bad|predicted bad) = 15%, 先求P(True bad|predicted good) = ?. 然后求出来的P跟3%差不多，所以觉得这个model不好，然后就说该怎么重新设计model。其实我当时也是有点懵的，就说了一堆feature engineering，试什么model，cross validation, ROC之类的，但感觉没答到点子上，那个interviewer就一直问我 还有呢还有呢，我就很懵逼 -。-
+非常感谢， 我觉得她提的提高model的方法大概有两种： 因为 true bad cuostomer的概率只有3%， 说明样本非常的不均衡，所以第一种方法是对数据进行重新采样， 使不均衡的样本变均衡。 第二种方法是改变模型fitting时的目标函数 比如不同类别有不同的loss来矫正不均衡性。 以上是我的拙见，希望也对你有些用处。
+
+
+3月6号 Richmond one-site 三轮面试包括 case, behavior 和 role play。每轮一个小时 九点开始  难度都不是很大。
+
+case interview 是关于life insurance的，之前地里有人提过。先问你对insurance了解有多少，如果你是manager，为了考虑到顾客死亡的概率 你会收集哪些顾客的信息。然后就是计算的部分了，很简单小学数学题。算达到break－even的死亡的概率是多少。然后面试官画了一个柱状图，有四个组，分别代表high risk low risk，median high 和 median low， 柱状图给出每组的死亡概率，然后有四种方案，1:全包括，2:只包括low risk，3:包括low 和median low 4:包括low, mdiean low 和 median high 问你会选哪个方案（假设每个组的人数一样）。如果想更赚钱你会怎么做。最后是opening question，如果你想去predict 死亡的概率 你会用什么方法，为什么。
+
+role play 还是flight delay的题，地里已经讲的很详细了。这个大家要好好准备，15分钟看report时间还是有点紧的，要想好如何和一个non-statistian交流
+
+behavior interview： 三个问题 每个问题都会根据你的回答有follow－up question。 1，challenge task  2，persuade someone. 3，deal with changing objectives in your project。
+
+
+去年1月面的captial one-- data scientist，一天总共5轮，三轮Behavior, 具体问题不是很记得了，但每个问题他都希望你举例子好好突出自己的工作哈。
+一轮是统计分析，给你一些数据，是航空公司的，让你用问你什么模型来估计迟飞率，其中coefficient代表什么，pvalue怎么看， R2 怎么解释，correlation table怎么看。最后问你有什么方法提高，我记得准备的时候在网上看到过类似的。
+还有一轮，有2-3个business case, 我记得一个是投资广告商投资无线电 radio。。还有一个是冰淇淋口味怎么卖赚钱。。都不难算，就是0有点多~~~
+
+
+电面一上来是讲一讲简历上一个project  具体问了问Linear regression的 assumption, cross validation 然后是用plain english解释一些stat concept, 有confidence interval, correlation coefficient, variance, marginal error
+然后问两个method response rate, 如何比较
+然后问如果有一个很大的dataset 1w数据吧，100个variable，问buid model的一些想法
+On site 
+1个behavior 2个case 还有一个stastitican role play 网上大部分都有这部分的面经比如（http://www.1point3acres.com/bbs/thread-8321-1-1.html），不是全相同，能有个大致的了解 
+有一个case需要解释一些数字in bussiness way， 感觉很吃力  - -
+
+
+好像地里没有什么stat的面经，来贡献一下刚面完的C1.
+面的title是statistician intern，interview有两轮，phone technical screening & on site， 先写点技术电面，要是过了再来补充on site。
+技术电面是sr.statistician. 一开始就说清楚了，把他当成non statistician来回答下面的问题。
+
+1.what is 95% CI ， 给了个例子how to get the population response rate from sample given the 95% ci.
+2. 给了个例子，age~ height+weight 问了multicollinearity的问题，要求解释，完了问一般情况下怎么detect
+3. 给了个 fund raising 例子，5000 alumni，1000 variables build a model to see the probability to make the donation
+    这个case 还问了包括 variables selection and model vailidation的问题. 1point3acres
+4. missing value problem. 有些applicants 没有透露 income， 然后他们用average income做了填充，问这样好不好，或者你有别的什么办法吗
+》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》
+一些别处找来的面经，自己面试前用来准备的
+what is p value, what is significance level, what is mean and variance
+what is mean by strongly postitively related
+how to select variables from thousands of them
+一些case
+1. 之前response rate 10% 现在变成18% 设计hypothesis test 来确定新的电话营销方案是真的提高而不是偶然发生的。
+2. 怎样在不增加cost的情况下使得response rate 升高。
+3. prsidential poll obama52% Romney49% margin error 3%， what is your conclusion.
+
 
 
 
