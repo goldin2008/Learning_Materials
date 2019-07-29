@@ -447,6 +447,222 @@ Effect #1和#2
              3）可以根据测试结果再搞个uplift model，看哪些high churn users可以挽回的，着重施加treatment。
 
 
+给你一dataset，比如信用卡一年的交易记 录、客户个人信息，银行想预测客户会不会在一个月之内关户，如果会的话，银行打算发一点cashback rewards给这些 人挽留一下。让你建模预关户。feature, data cleaning, outlier, missing value, ...
+
+废话说了一堆，来说说面经吧。在linkedin上海投的senior data analyst，recruiter第一次联系我都是一个半月以前的事了。之前在地里也看了几篇这个职位的面经，具体流程几乎完全一样，很标准化。
+1. recruiter
+第一次和recruiter聊几乎没问什么，就是基本信息吧，问你愿不愿意relocate，介绍了一下面试的具体流程：hackerrank coding challenge+data challenge+onsite，聊完就给我发了hackerrank的链接
+2. hackerrank coding challenge
+两道简单的称不上算法题的算法题，两道SQL。算法题具体是什么忘了，之前的面经好像有，反正所有test通过了提交就行，也没有时间复杂度的要求。SQL也挺直白的，用到什么group by再sum一下这种。
+3. data challenge
+airbnb和zillow的数据，之前有人发过。投资NYC的properties来short term rent，要决定哪些zip codes最profitable。要先进行data cleaning，check data quality（从completeness，accuracy，validity，timeliness方面，具体可以google一下），然后进行分析并data visualization，最后给出建议。hr建议花5-8小时，但我觉得我做了一周，也不知道做了几小时，反正每天都花点时间在做这个。
+有人说C1比较偏好用Python做的，不过我用R写的也过了，因为要visualization个人觉得ggplot比较方便。onsite的时候有一轮是present data challeng。这轮的评价准则有三个方面：Data Management， Innovation和Business Intelligence。但也不清楚具体做到什么程度才能过。
+4. onsite
+data challenge过了以后就是onsite，约了三周以后，当时觉得时间很多，但准备着觉得时间还挺紧的因为要准备的内容挺多的。提前打电话给他们会帮你定好机票和酒店。
+onsite包括三轮：data challenge+case+case（每一轮都会包括1-2个behavior的问题）之后会和公司的一个人和那天一起的candidates吃午饭，参观公司。
+
+data challenge:
+把之前做的data challenge present一下，我是做了个ppt，然后花了20分钟从头过了一遍我的整个分析。之后面试官会问一些问题，不一定是啥，反正就按照自己真实的想法回答就行。
+
+case interview：
+因为之前完全没有case，还挺紧张的，搜了各种consulting 的case的准备资料，也不知道该看什么。但其实这个case和consulting的case还差别挺大的，几乎都是profitability的case，万能公式profit=revenue-cost。首先面试官会给你一个背景，一开始会问关于business sense的问题，比如有哪些factor要考虑，revenue和cost的来源，为什么要做这个新的产品。然后就会给你一堆数据，有的是读给你听你要自己记下来，有的是已经打印在纸上了面试官这时拿出来给你看说我们有这些数据。下一步就是计算profit，或者break-even。接着是各种变体，比如一个变量发生了变化，再算profit或者break-even。计算得出的数有的会问你这说明了什么，你觉得这个结果怎么样。基本就这样。
+
+我面的两个case都是银行相关的。第一个是ATM的，第二个是要发行一个personalized credit card。
+ATM的case：
+先问你知道ATM吗，为什么要有ATM，ATM revenue来源（收取不是本银行的人的手续费）。有两类ATM，在银行内部的和外面的。给了一些数据要算一年profit，但是自己要想到问面试官非本银行客户的百分比。然后下一个问题关于银行外部的，要考虑哪些因素。好像也给了些数据算什么break-even，需要非银行客户的百分比达到多少，并解释你认为这个百分比能不能达到。。
+
+personalized credit card：
+发行一种可以personalized的credit card，问为什么要这样做，一个原因是希望客户多花钱。然后有一个market campaign，给了response rate，普通客户每个月balance，response并定制了的客户每个月balance，要计算平均客户的balance，也就是weighted average。然后又给数字算选择定制的客户定制之前的平均balance，得出要比所有平均客户高，所以我们要target本身消费就高的那些客户。然后又
+给数字计算profit好像。如果我们不是免费定制，而是加上每张卡5块的手续费，需要多少response rate保持同等profit。
+
+真是金鱼记忆，三天前面的现在case的细节已经记不太清了。总之其实就是给场景的数学应用题，认真听面试官在说什么，计算认真就好了。
+我准备case用到的资料有，recruiter给的pdf了或者官网上也有的关于magazine的例子，capital one的一个专门为analyst面试的case讲解视频，caseinterview.com的视频看了一些对case有了入门的理解，书case in point看了几个例子（虽然和C1的case本质还是不太一样的），然后就是glassdoor所有这个职位的面经例子。
+
+behavior的话基本都是glassdoor上说到的题目，我的是介绍一个accomplishment，一个帮助过别人的例子，一个失败的例子并学到什么。
+
+“1和2都是同样4组数据：transaction master data, wire transfer master data,branch master data， 第四个忘记了，用不着
+1. 是算destiny country是canada，固定时间的，所有transaction总和 （第一，第二组inner join一下，加上条件，算个sum）
+2. 是算固定时间下，ATM only的branch，列出branch id和transcationamount （要去branch master data里去lookup一下，对应“ATM only”的编号）
+3. 是input一组string，逗号相隔，数有多少个不同的string，大小写忽略，标点符号啥的不忽略
+4. input一组数，逗号相隔，输出被3整除的factor的总和，比如输入（3，6，9），输出6“
+引用自
+“Capital One Data Analyst 做题汇报
+http://www.1point3acres.com/bbs/thread-228891-1-1.html
+(出处:一亩三分地论坛)“ 如侵歉删
+
+总之不要把这题目想复杂，其实后面这俩用python写基本都是一句话的事，跑过了基本就完事了。结果一般只要1天，然后就安排下一轮
+2. Data Challenge 这个还是很耗神的，因为我以前多用SAS，但是这个Challenge只能用Open Source，所以最后决定用python，所以只能边摸索pandas边做，一周一直在做在修改，大概花了超过20个小时，肯定算是比较慢的。Case就是airbnb和zillow，帮一个地产公司看看哪个邮编适合投资。整体思路其实非常简单，就是dataquality check，按标准的六个部分来，然后inner join，然后算一个index，可以用breakeven year也可以用return rate，我用的后者，然后出一个图。个人建议不要做非常复杂的prediction，data有啥你就说啥，不要想当然得对一些缺data的zip做估计，因为很可能出错，所以如果有这类想法就写到what’snext里，证明自己想到了只是没时间做。。，这一轮最关键的除了代码质量其实还有business sense, 问题尽量想得全面一点。个人建议写一个详细的Report，写明整个流程和自己想到的所有问题，然后并且在代码里写好comment让人容易看懂。我Report写了6页，感觉对这轮通过和后面的onsite帮助很大。我记得地里有人share过data本身，大家可以找一下在接单前提前练手。
+3 Onsite 第二轮过了以后就会联络onsite面试了，我选了比较晚的一个日期，因为之前很忙所以还是没啥时间准备。我准备上基本分了behavior, case,data challenge这几部分来，搜集了一些题目，很建议大家好好理解官方那个准备材料和youtube上的视频，会有不少帮助。然后data challenge基本照着report做了个ppt。就出发去richmond了，头一天飞机晚点导致转机误机，改签以后到达酒店已经是半夜1点了，睡了5个小时就退房吃早点然后坐酒店shuttle去了面试地点。面试分三场每场1小时，我的顺序是case-data challenge-case，这个HR会提前通知。然后每一场会先问一个behavior question。
+我的behavior question分别是一个近期犯过的错误，一个accomplishment, 一个在工作中帮助他人的例子，都是tellme when系列，回答时尽量按STAR原则答，说得有条理像讲故事就好了，一定不要编，说真事哪怕不精彩都没事，多讲点细节就行了，我附件给大家一个我搜集的问题。
+第一场case是我最紧张的一场，因为case完全没见过！说好的就那几个case的呢。。所以其实感觉面的有点翻车，所以按印象把题目分享给大家，大概是说你负责帮别人收麦子，问你需要考虑什么，然后会给你一张表格，上面写着土地面积6400亩，一台联合收割机每月收6000亩租金15000，一辆卡车每月可运走5000亩的麦子租金5000，每亩产量200斤，每斤售价0.15，第一问问如果租了收割机和卡车各两台那么profit是多少，第二问如果土地面积在0-12800之间可变，收割机和卡车数量可变，那么最优组合是什么以及profit多少？我第一问一开始理解有问题想复杂了，好吧其实是他题目介绍的东西太多弄晕了，所以就算一步说一步，到后面时间紧张了，第二问时间很短没能给出一个最优组合，给出了几个次优的情况没列完。这里注意一下behavior还是要控制时间，我这次就是前面short talk 有点多导致了后面没了时间。个人感觉这场面的不理想。
+第二场是data challenge，之前对这场比较紧张因为总感觉准备的不好而且怕他刁难，实际上却面的不错，可能是因为ppt比较详细吧，我们就并排坐在电脑前给他讲我的ppt，我也给了他一份纸质的report，我大概讲了半个小时。。。当然他有问题就在中间直接问我了，但是完全没有深抓不放，我讲完之后基本也就没时间再问问题了，算是策略成功哈哈。
+第三场case面的最轻松，面试官似乎急于面完，虽然也写了很多东西但是流程很快，case是ATM的那个，算是有准备到，就是问怎么盈利，两类atm一类是银行里的一类是其他公共场合的比如酒店车站，哪些revenue哪些cost，然后说分两种客户本行和非本行，非本行的可以每笔收3刀transactionfee, 告诉了每笔的cost，和fix cost，问非本行用户达到多少比例可以breakeven，我具体数不记得了因为面的太快，但是记得他给了两种情况算出来第一次是33%第二次是50%，然后问我是不是make sense 我说是。然后给我一张纸让我对这个比例和某个其他变量（不记得了）画个图，我是设了个xy然后算了个y=f(x)出来，大概样子是y=a +b/x, a和b都大于0，是具体的俩数字，然后画在了图上也不是很精确，然后他问我这线会不会碰到xy轴我说不会。然后就完事了，整个第三场花了不到35分钟，导致我后面有大把的时间闲晃等待其他candidate一起吃饭。
+面完感觉很忐忑，因为面试官会在旁边会议室直接讨论结果，但是不会公布，而我第一场又感觉表现一般，而第三场又太快都不太正常。然后到了回家后第二天一早HR发邮件说feedback不错，所以算是有着落了，不过目前还没有讨论分组和teamfit，所以还没有完全踏实下来，先分享一下但愿我接下来顺利吧.
+
+我的面试从早上8点到中午12点   Case-Behavior-Case-Role play。 但每个人都不一样，最好提前发邮件问一下Recruiter.
+每个环节长度在45分钟到1小时左右，如果有多余的时间你可以选择问面试官问题也可以休息。
+下面具体介绍下每个环节：
+. check 1point3acres for more.
+Case1:
+两个面试官，一个是负责面试的，另外一个负责记录。（这是个特殊情况，负责面试的那个人正在接受面试培训，负责记录的那个人会记录我的表现，也会在面试后对这个实习面试官进行培训。之后的三个面试都只有一个面试官）
+每个环节之前面试官都会自我介绍，这时候个人建议可以和面试官搭搭话，放松心情。
+
+提醒：一下都是中文翻译，具体专业词汇可以上网多看些Case。
+第一题的背景是：有一家新银行要进入某个新的信用卡市场，问你会考虑哪些要素。
+我答曰考虑成本和收益。之后具体分析信用卡有哪些成本和收益。
+成本：管理成本，制作成本，贷款成本，推销成本和违约损失。
+收益：交易提成和利息。
+然后给了面试官给了我管理成本，贷款成本，制作成本，Average Balance和Default Rate,让我算Break Even的市场份额，实际面试的时候不会都给，比如有时不考虑推销成本和交易提成等。
+但是我列给她式子说算市场份额，必须要市场总人数才能算。
+然后她又加了一个市场总人数，于是我开始动笔+计算器算，算完给她结果。（注意如果你算得慢，记得一遍算一遍保持沟通，不要沉默太久）
+接着她改了某个参数，让我再算一遍。（大多数题都是这样，让你加个条件减个条件重新算）
+最后让我给她些建议。
+我就扯了些减少成本，增加顾客数量，同时要注意应对竞争者之类的。
+总结，第一个因为面试官不成熟，总体感觉有些不流畅。
+. 1point3acres
+Behavior:
+面试官是个美国人，一进来就问我的名字怎么发音，然后又和他聊到糟糕的天气和刚开的樱花。（再重复一次，每个面试官都很好，不需要有压力）
+接着是三个常见的问题：
+
+1.让我描述我完成一项任务
+2.让我描述我怎么劝说别人
+3.让我描述怎么应对变化
+这些问题你都可以在他发你的参考文件和接下来我会给的网址里找到
+
+Case2:
+还是关于信用卡的案例，不过这次无关关市场份额。只要算一下达到利益均衡的时候Default Rate最高能到多少。-baidu 1point3acres
+最后一个问题我卡了很久，一直没反应过来。他问我做之前计算的基本假设是什么，答案是所有的Default都在一年年末的时候发生。越早发生的话收到的利息就越少，因为一旦Default，我们的客户就会减少。
+
+Role Play:
+Statistcian特有的一个环节。面试官会给你10张左右的SAS输出表格，是关于航班延误的预测模型。
+参数有：温度，飞机类型，座位数，旅客数，地勤人数，登机口工作人员人数，星期几
+需要预测的是：延误时间
+报告里的模型用了温度，地勤人数，登记口工作人员人数，旅客数，星期几
+Response=1 如果延误时间大于0，反之 Response=0
+但是在资料里写着，旅客不会在意延迟时间在8分钟以内的延迟。所以这个模型是不好的。
+还有一个correlation table和一些各个参数之间的点图。
+面试官给你15分钟时间准备，然后回来让你做个report，她扮演客户，只有基本的统计知识。
+我在这里犯了一个错误，因为我在网上看到过会面这个，也知道这个模型不好，所以在report阶段就说了这个模型不好，应该用logistic而且应该把0和1的限制设在8分钟。
+但后来仔细想想，report的时候应该认真做report，模型的好坏应该时候再论。
+
+大概的情况就是这样，下面是几个有用的链接：
+http://www.mitbbs.com/article_t/Statistics/31303221.html
+http://www.mitbbs.com/article_t/Statistics/31255909.html
+http://www.mitbbs.com/bbsdoc3/life.faq/JobHunting/mianshiexp/C1/5
+http://blog.sina.com.cn/s/blog_dc8631550101dxwo.html
+http://alstonrussell.typepad.com/blog/2012/01/chase-to-cross-sell-credit-card-insurance-to-card-holders.html
+还有一个电面的小帖子：
+http://www.englishbbs.net/bbs/forum.php?mod=viewthread&tid=4794
+-baidu 1point3acres
+今天当天去面试的两个人一个拿到了offer，一个被拒，还有另外一个和我在等，已然希望渺茫。祝各位看官，也祝我自己之后的求职道路一切顺利。
+
+第二轮今天刚面完，是个电话case interview，我同学之前也面过这个position不过是芝加哥office，然后我们面了同一个case，之前我有问过他面经，不过我觉得完全没有帮助，因为真的很多数字还有好几个0需要你算来算去，说实话还是有点confuse……
+
+我面的这个是说有一个NGO在为当地一个after school program募捐，问你要怎么办。我吧啦吧啦说了我的想法，我之前面blackrock有面过一个类似的case，不过那个是说blackrock打算搞一个募捐活动，你打算怎么办，完全是strategy的东西，没有很多计算……于是我拿出了我原来和客户神侃的本事，我们可以搞一个关于zzzzz的活动，要增加revenue我们可以xxxxx，要减少cost我们可以yyyyyy，我自己说得太嗨然后被无情打断了说let‘s stop here……给了我两个方案，一个是办一个gala，场馆只能容纳100人，一个人能捐1000块，cost是100/人，租场馆要花20000块（好像）；还有一个是online mkt campaign，只能reach 1000
+人，捐多少钱我忘了，有个一次性的fix cost，多少钱又忘了……这题还挺简单的……
+
+然后问我怎么增加net income，我又开始吧啦吧啦，然后他让我dont go too far……就说假设我们只能邀请/reach那么多人了，你要怎么办，我说了点怎么增加revenue怎么save cost，不知道这位大哥怎么想……
+
+后来他又说总共的这些人里，1000人里有800个是low budget，捐的钱少，给了他们大概会捐的钱和cost，问big donator需要多少人，两个方案哪个更profitable，这个地方还是挺confuse的，他一开始根本没说这1000个人是总人数还是什么，我算到一半觉得不对了，就问他，他说你别忘了800 out of 1000啊，我说你不是说了第一个只能容纳100人吗，那我可以就按80%吗。大哥说可以……说实话我觉得这个不是特别make sense，你这1000个人里有800个人是，不代表那100个人里就有80个人是啊……但是这位大哥都这样说了，我还能怎么办……. From 1point 3acres bbs
+
+最后算出来了人均的，online的比较高，大哥问我选哪个，我说不能只看人均还要看我们总共能搞到多少钱啊……如果有一个的人群数量有很多增加的potential，哪怕人均低也有可能会选啊……大哥又说我go too far了……然后说你别多想就先选吧……我选了online因为total高……大哥就说了个alright也没说对不对……
+. check 1point3acres for more.
+终于面完了我觉得我面到最后声音都tm在颤抖，然后大哥说虽然我们面了这个case但其实在C1我们平时根本不做这些东西嘿嘿嘿。（那还面个JB啊气死我了）然后说他们平时要帮data scientist做model啥啥啥的……其实我还是挺会瞎BB model和我的project，结果一句话没让我说就做case了，连自我介绍都没，妈个鸡……
+
+据说他家下一轮还是case，于是我就开始为他们担忧了，如果有人特别会逼逼case，但实际上model和data啥的什么也不懂可怎么办，C1长此以往岂不是要完……好吧我又go too far了。
+
+我现在说实话也有几个final round在面着，在国内和美国case也面过好几次了，他家的case和一般consulting的case的style还是有很大不同的，我个人感觉，根本不怎么看我的framework和strategy，就是让我拿一堆乱七八糟的数字算算算……这轮面试让我隐隐有一种我和C1不会很match的感觉……我估计我也没达到大哥的expectation，他中间两次嫌我太能BB了……目测是要挂……
+
+据说C1给回信很快，我一个朋友面了之后第二天就收拒信了，我可能就是明天了吧……C1确实不是我唯一的选择，虽然今天这轮让我有一种我和C1并不match的隐忧（别人要不要我还不一定），但我还真的挺喜欢这个position的，做得事情我也很感兴趣，open的几个location我都很喜欢，原来recruiter问有没有location的preference，我为了找到工作都说没有，可是C1这次才是真·没有，如果C1瞎掉要了我，我的原计划是再也不跳槽直接养老的，现在感觉非常遥不可及了……唉。
+
+说了一堆有的没的……我投的这个position上面写的是Richmond，也是Richmond的recruiter找的我，然后是Texas的一个manager面的我，我今天问了一下也并不是哪里的manager面你就会让你去哪里。
+
+希望这个面经能给我攒一丢丢人品吧……ball ball u了C1的这位大哥……有其他再想起来的我再在评论里补充。
+
+地里和glassdoor的人都遇到过这个题，这个简单到我记不得具体数字了，计算量也很小，题目包括：
+   Issue 一个 life insurance 要考虑哪些因素  premium, term, death rate, target customers, marketing and operation cost, competitor
+   然后大概给了上面的revenue 和 cost， 5、6个数据的样子，计算一年和6个月的death rate to break even.
+   给了 ABCD四个组的 death rate, 问应该issue给哪个group combination, 并以x-axle 为 groups (A,AB,ABC,ABCD) y-axle为profit绘折线图，注意slope 和 最后profit要落在0以下
+   如果硬要issue给高death rate 的人，你有啥建议to make profit
+
+
+二轮Tech 就是问NYC Taxi 的那个homework， 你觉得哪些你做的好，哪些做的不好，然后他引导你改善。然后让我白板写了个one hot encoder 的伪代码。我engineer出身，所以这个很容易。
+
+三轮role play, 亘古不变的flight delay 的predictive model,我选的linear regression，地里有一个很早年的帖子，里面的内容挺全了, 说白了就是挑毛病给建议。只要你看得懂AdjustedR square, P value, VIF, Correlation就可以了。15~20分钟presentation根本不够时间把所有毛病罗列一遍，最夸张的是居然把linear regression 当logistic regression在用，简直人神共愤，无力吐槽。 
+
+补充内容 (2018-5-3 12:42):
+四轮 更复杂的一个case，此题数字略多一不小心算错三次。是一个mobile app of game 的题。包括：
+   1. 什么因素衡量app是否值得发布, 跟上边的差不多，所有case都是revenue，cost，再扯点其他的就可以了
+
+补充内容 (2018-5-3 12:45):
+   2. 给了#users, download price, in -app purchase per user, Ad rev per user, cost..将近10行的数据吧，2组产品free 和 paid的，问哪个更盈利。这个就是revenue-cost的题啊，很简单吧，别着急，复杂的在后面
+
+补充内容 (2018-5-3 12:50):
+3. 如果要同时发布两个产品，会发生什么。 当然是用户flow到另外一个组而影响profit了
+4. 如果同时发布，问多少user从paid APP flow 到free app才break even， 这个计算的假设是什么
+
+补充内容 (2018-5-3 12:53):
+5. 难题来了，现在就是三个组了，free, transfer to free from paid, stay in paid 这三个组。 先计算free组的 ad rev per user, 然后更新每个组的profit，然后重新计算上题的break even point
+
+补充内容 (2018-5-3 12:56):
+6. 根据你的计算，如果要创造最大的profit, 那你有什么建议。
+这个题从第5题开始，LZ就蒙了，而且由于是video面试，增加了面官给我纠错的难度。虽然最后在面官的引导下回答出了正确答案，想想还是心慌慌的
+
+补充内容 (2018-5-3 12:59):
+最后一轮 behavior，四道题，很快就结束了。. check 1point3acres for more.
+
+大家都说C1的interviewer很好，LZ在这里表示can't agree more. 
+
+
+补充内容 (2018-5-4 07:19):
+Final round, Job fit on phone call, 其实不是面试，就是聊聊哪个组合适。后来从recruiter 那里得到的反馈居然是lunch的时候那俩senior manager 对我很满意。。。纳尼，不都是你们俩一直在说么。。。
+
+是要达到一个数，我记得是$60K，然后有X的user从paid app跑到free app， 所以最后的公式是 profitOfFreeApp * (#originalFreeAppUser + X) + profitOfPaidApp * (#originalPaidAppUser - X)  = $60K, 其他具体的数我就不记得了。
+
+首先，互相自我介绍，我把自己目前工作的情况说一下，他说一下他们组目前正在做什么，讲的非常详细，我讲了大概两分钟，他讲了有七八分钟的样子，这期间我也问了几个问题，因为他们组做的几个东西我觉得还挺有趣的，就随便聊了下。
+然后，马上进入case，没有任何废话，准备好纸笔，仔细听他说什么，如果漏听了或者没听清，一定记得再问一遍不要怕，我就是他讲完，虽然我听得很清楚，但是我还是重复了一遍他的case，这样就不会有信息错误。我的case是：预测我们现在的信用卡客户会不会关闭目前的账户，数据有多大也告诉我了，4Million。他一直在强调不要进入模型回答问题，说我的business sense。
+1. 典型的binary classification, 给了我六个features，让我谈一下不进入模型的时候对这六个features的认识，然后我会对他们做什么？我用什么语言做？会用到哪些包？这些包具体做什么的？
+2. 问我用什么模型处理这个问题，为什么选这个模型？（我选的LR）decison tree可以做么？为什么不用？
+3. 如何处理missing values, outliers?
+4. 数据量增大，4个billion，我该怎么做如何让我们的模型有效？
+5. 模型已经建好了，如何看performance of model?
+6. overfitting如何处理？（并非直接问的，而是结合实际，拐弯抹角问的）. check 1point3acres for more.
+7. Confusion matrix & ROC curve(也不会直接问，会结合实际场景问，一定要做到非常熟悉这两个东西)
+8. 大家都知道feature engineering是很重要的一步，有几个问题我觉得他是在问我这个，但是我回答完他还是说先不谈模型，你会怎么做？我就绕来绕去还是扯回到了feature engineering上来。
+9. MapReduce是什么？对于Hadoop, Spark这些了解么？
+以上问题基本是我能记得的，还有一些细节问题我就不太记得了，我基本回答完他都会说that makes sense, correct,这样的话，我想应该是肯定我的回答吧。在回答问题的时候我也基本没有间隔，他问什么我就几乎一到两秒的反应就开始回答了，其中有一个题我不太记得是什么了，脑子突然走神，硬是愣了有个五六秒，我一直在支支吾吾，最后不过还好也算回答了，这种情况我想有一个一两次可以接受吧，但是如果全称支支吾吾那就不好了。总共是一个小时，除了自我介绍，case这部分大概不到五十分钟样子，电话打的超过了一个小时（计划是一小时的）。
+
+10. 这是一个重磅题，最后一道题！我觉得我答的不好，因为是一个完全open的题目：有两个客户都是5000的credit limit，但是一个100%用了这5000，另一个只用了2%，但是我们的模型给了他们同样的label，该怎么处理？（我回答的不好，因为一直在考虑模型有问题，也设身处地考虑了一下我自己如果有张信用卡不怎么用的话会不会关掉这个账户，把我能想到的都讲给他听了，他应该还是不太满意，说如果不考虑模型，我该怎么做？最后结束面试，我问了他一下这个事到底怎么回事，他的解释就是要考虑现实考虑每个人的具体情况，因为模型归类了这两个人属于同一类的情况并不会太多，是非常少数的情况，我们需要挨个去查看根据不同的需求，他说了一大堆，我能听的明白的大概就这个吧，还有一些别的，我不是太懂，这是唯一觉得回答的不太好的问题。最后我说我真的尽力了，他还说非常感谢你的诚实，哈哈。
+
+
+分享一个capital one Data Scientist 的面试经验，回馈地里，已跪，也算造福后人吧。
+
+一年多工作经历，去年12月在网上海投，到今年18年2月末挂在onsite，2个月的时间，经历四轮面试+onsite，职位地点在纽约，Data Scientist。
+
+12月末海投大概一周后收到通知，第一轮与HR电话聊聊经历，之后第二轮收到一个 HackerRank online coding challenge，两个小时三道题，并不很难，不涉及复杂算法。又大概一周后收到技术电面通知，也就是第三轮，一上来先聊简历，之后对方假设了一个数据条件和场景，然后一步步往下问，从cleaning，feature engining，到 model selection， validation，同时也涉及大数据量的情况，问当数据量很大的时候怎么处理，用什么工具，问的比较细致，有的地方要大概描述代码怎么实现，电话持续一小时。这一轮之后大概几天，HR通知过了，进入第四轮，第四轮是一个 data challenge，边写code边写思路，一周的时间，题是关于NYC green Taxi，地里有人分享过原题，大概是需要建一个回归模型预测出租车小费比例，个人觉得重点在于如何观察数据，清理数据，feature engining，数据中有缺失值，异常值，之后也要选择模型，对比模型表现，最后写出结论和future work，challenge的最后是一道5选一的开放题，我是选了做visualization，用tableau做了一个interactive dashboard。这个challenge挺花时间，我用了大概四天，尽量把思路都写清楚，值得一提的是github上能找到一些前人做的，可以提供一些思路。这轮之后过了一周，HR通知过challenge过了，安排了两周后的onsite。
+
+onsite是在2月下旬，纽约办公室，全天面试，早上8点半到，9点开始，一直到下午3点半，中间1小时吃饭休息，一共6轮，每轮1小时，轮与轮之间几乎没有休息，一直在一间小会议室里，有几轮是远程视频，面试官都是 Data Science director 或者 VP data science。六轮中2轮business case，2轮tech（有一轮叫hiring manager interview 但实际是tech），1轮role play，1轮behavioral。网上有business case interview 的介绍视频，不了解的同学可以看一下。从9点开始，第一轮business case，场景是超市发放private credit card，有一些上一年的历史数据，问题涉及计算 profit，revenue，cost，market share，计算 market share 的时候要先计算全城有多少信用卡，面试官不会一下子把数据都给你，你要想计算时需要什么数据，考虑多种情况，同时问面试官某些数据有没有，比如说计算全城有多少信用卡就需要全程人口总数，成年人比例，和人均信用卡持有数三个数据，这些都需要问面试官才会得到。另外最后会有开放性的讨论，就是计算出一些结果，问你根据这个结果要采取什么样的行动，这个就比较靠business sense，要讲出道理。这一轮9点到10点，然后10点喝口水就又开始下一轮，第二轮同样是business case，一位VP，情景是电话接线员，给一周每天的平均电话时间，电话数量，还有一个是转接率（一个接线员不能解决问题需要转接的情况），计算围绕每个电话的平均通话时间，转接电话数量等等，最后也是开放讨论，如何才能降低转接率，提高接线效率。之后11点开始role play，role play 是飞机delay经典问题，网上可以搜得到，我再具体讲一些，就是假设你是一个数据咨询公司的咨询师，面试官是你的客户，一位business manager，假设他不懂统计和模型，他给你提供另一个数据咨询公司做的分析，是大概10几页slide，里面有各种分析图表和一个预测模型，让你给他讲一下这个分析都做了什么，根据它提供一些解决delay的思路，同时评价一下这个分析做的好不好，不好的地方提出改进思路。给你15分钟自己看材料，然后25分钟给他讲。讲的时候我是把材料一页一页都过了一遍，以咨询师的角度，抓住几个重点，1是讲解材料内容解释数据图表和模型，数据中不合理的地方要指出（如异常值）；2是发现问题提出改进，分析做的不好的地方，没意义的图表，模型的缺陷等等，提出改进办法；3是要时刻为客户着想，通过手上的材料，客户可以采取哪些行动和尝试来减少delay。这一轮真是挺考基本功和交流能力的，看数据和图表要细心，要尽量考虑全面，比如可以增加哪些feature，如何提高模型。这一轮12点结束，之后开始第四轮behavioral，也是上午的最后一轮，主要问了如何团队合作，如何向他人学习，如何解决矛盾冲突，如何合理安排任务优先级，如何面对挑战等等。都是先问一个问题，你讲一个事例，然后他根据你讲的事例深挖不同的问题，我是一共讲了三个事例，每个事例都被问了三个问题的样子。
+
+1点上午的面试结束，中午跟一个 senior data scientist 吃饭，相互聊了聊经历和公司环境。下午是两轮tech，第一轮2点开始，问了multinomial distribution，结合不同的模型谈这个分布的应用，然后白板写sampling from multinomial distribution，之后问了variance 和 bias， 解释和如何检测，最后聊了聊如何根据不同分布生成fake data。我是这一轮答的不好，其实挺基础，但我之前并不常用这个分布也没准备到，最后也就挂在了这一轮。后面最后一轮，面试官非常细致的问了我简历上的一个task，从数据到模型到结果，之后又问了前后端如何衔接（我简历上有提到但应该不是DS必备），模型如何应用到实际等等，本来还应该问data challenge，但面试官说我的challenege写的很清楚明了就不问了。至此，下午三点半多，结束整天的面试，HR送我出办公室。
+
+最后谈一些感想和如何准备，首先onsite是所有轮都通过才算通过（我事后问了HR），所以每一轮都不要放松警惕，哪怕前5轮都很顺利，最后一轮也不能放松，因为就算5个面试官都很喜欢你，但有一个说你不行，你还是拿不到offer。保持一整天的清晰思路挺不容易，所以要做好准备。关于准备，business case方面网上挺多资料，视频和文字都有，多看几个，尤其C1家是做银行信用卡，这方便的知识术语应该提前了解一下，比如信用卡业务如何盈利，成本和收入都有哪些方面，business sense也是平时的积累。behavioral 也要准备几个case/story，网上有几个大类问题的例子（合作，冲突，挑战，失败，领导力等），可以参照着找自己类似的经历。剩下就是tech技术，coding，数据分析建模，统计，机器学习，这几方面的基本功，不一定考的很深，但知识的全面覆盖和应对是有一定难度。
+
+基本也就这些，整体感觉DS找工作还是挺不容易，竞争激烈考察点宽泛，祝愿DS求职者可以拿到心仪公司的offer。C1家整体感觉挺不错，技术环境都不错，有近期面试的祝愿可以拿到offer。
+
+1）OA 2 SQL 2 “algorithm”。 SQL就是基本的query，吧leetcode sql部分做一遍就行，算法加引号因为只需要把东西做出来就成，什么运行时间啥的都不用考虑，我的经验就是吧简单的题做会就行。一道我忘了，另一道是把text里所有单词以及出现次数找出来，用python str内置语句加dict就可以解决。
+
+2） Data Challenge 这个我觉得是最难不好把握的一点，题目说大约一周时间，总共8个小时左右可以做完，但实际上如果你想做的好，最好花个15-6小时做。data quality方面，主要考虑uniqueness completeness consistency validity （细节可以google data quality一下，算是标准的东西，对于我这种一直在和data 打交道但不知道标准流程的人来说还是挺有用的。data quality最关键的是你要仔细考虑data 中出现的问题，以及如果这些问题没被处理会有啥后果（之后on-site会被问到）。接着是visualization，考官会为你为什么你用了line plot而不用bar，或者你有没有考虑过其他的visualiation。最后是business sense。我个人的建议是把 data challenge 做成 consulting project，仔细分析data，考虑 market segment， time seires pattern， competitor analysis。形成一个逻辑自洽的解释，并提出建议。建议方面我是按照consulting case 做的，直接上结论，接着写3条原因。
+
+但基本上是interviewer led 的profitability 的case，找均衡点的。第一问都是问你busienss sense，比如需要考虑哪些方面等等。这部分我建议用case interview 的profitability framework，先说考虑revenue 和 cost， 然后里面再说的细一点，尽量做到MECE。第二问基本上都是math，分析均衡点。数学比较简单，但要心细。最重要的是尽量不要用short cut，要把interviewer 当傻逼，一点点地喂。我的做法是把问题分成一步步，每一步算一个变量。比如求profit，你先告诉interviewer我要用revenue-cost，然后告诉他我要算revenue，算完了再告诉他我要算cost，总之就是把每一步都解释清楚。不要自己在脑海里憋着算。如果你练习过management consulting 的case，capital one 的要求类似，但程度应该是没那么严格。毕竟面你的人不是consultant，对softskill的要求没那么高。一般第三问往后就是和你讨论各种alternative situation，比如把这个变量变成2倍会如何等等。有时候会让你画图。最后会让你出个receommendation，你就照着consulting 的标准就行了。附件里是我网上找的题，我觉得帮助挺大的，尤其是如何计算信用卡收入支出这块，很有帮助。
+最后是behavior， 你找找glassdoor的例题就行，但要注意interviewer会问的比较深入，所以如果你编了一个例子，最好把细节想好。。。
+
+基本是。我面的时候第一个case是分析银行推出一个新的服务，做了一个实验，分treatment group 和 control group， population 分两类人，根据给的数据分析出每类人消费变化。第二题是冰淇淋，关于找到最优数量的制冰机和搅拌机。影响因子有机器费用和客户需求cap等等。算是profit 问题的一个变体吧。根据我的体验，附件pdf的很有代表性，我觉得你把附件里的case研究透了，on-site的时候再心细些，就ok了。剩下的就是注意表达和交流，这些你可以看看consulting的case 材料。
+
+这个其实就是adverse selection。你容易招人，节省费用，但找到人容易default，增加费用。这里有个tradeoff。 所以会有最优解，response rate 太低，找不到人。 response rate 太高，default 费用超出了收入，所以会有这个曲线。
+
+关于第二个问题，我建议你case的时候最好和interview 确认一下，一般请款下，apr就是年化率，这时候如果balance是恒定的，就不用乘12，premium是月支出，所以乘12，当然你一定要喝面试官确认。
+
+
 ## Algorithm Study
 
 http://www.hawstein.com/archive.html
