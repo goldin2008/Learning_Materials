@@ -317,9 +317,6 @@ case就是大家提的信用卡的case，因为看了大家的帖子，感觉自
 
 主要就是去建模判断用户要不要关账户
 
-
-. check 1point3acres for more.
-
 1.     Target/goals
 2.     选feature
 3.     data cleaning:
@@ -400,7 +397,54 @@ Flight Delay problem (永远是它！）
 Round 3: Life Issurance（这个case是真的不费脑子啊…当时的感觉就是纳尼这就完了不对感觉有阴谋）
 所以就不多说了，其他面经里面或多或少有收录
 
+第一轮 BI
+1. 地里的原题 每一个问题都有followup. 1point3acres
+Tell me about a time you explained a technical topic to someone without a technical background.  
+Tell me about the project you are most proud of.  
+Tell me about a time you learned something new.  
+2. Case Interview
+2001 C1 收购 ING， 有什么advantage  还有会有什么技术性的问题
 
+1. Case interview: Life insurance（这个好像以前有人发过。。但是每次问的问题好像有点不同） 
+   先问了一下你认为有哪些人我们不愿意轻易issue insurance给他们 （老人啊，有严重疾病的人，高危职业从事人员， etc）
+   再问了一个death probability的问题，算一下在这个prob在什么时候我们可以考虑给保险。最后一个问题没记太清楚，大概是说各种dead prob的group，怎么样选择能使得profit最大。
+
+2. Role play interview: Airplane delay （太多重复了，就不细说了） 我看地里有人被面到这道题时被面试官问了很多问题。。但是我一个问题都没问。。我讲完就直接说role play 结束了。。。感觉凉了。。
+3. Behavior interview: 
+   (1) A project that you are proud of;
+   (2) Time about helping other people in your team
+   (3) Time about failure and mistakes.
+4. Job fit interview: 我都不知道有这么一轮。。一个印度人video面试。。问了几个问题。。完全不知所以然。。仅供参考：
+   (1) 给你一个NY times 的报纸，有没有什么算法能够给出top 5 popular companies。。。。我说你这个至少要知道关键词吧。。他说不知道，没有关键词。。然后我说那你像apple这个词，那到底是apple公司呢 还只是一句话里面的什么apple tree，apple juice什么的呢。。他说你可以分别考虑。。。。。我就不知道了。。我觉得这个问题作为面试问题也太open-ended了吧。。。只能凭空yy。。
+
+   (2) 给你10000个不同industry 的不同variable，如果有connection的variable就连起来。。形成一个graph，问如何估计这些connection。。。然后如何度量一个industry里面各种variable之间的联系。。
+
+然后就是Onsite，Case study中有一个是Life Insurance的那个，首先什么样的人会买保险。。。【危险职位的人】，但这样的人我们不想卖给他保险，我们的target应该是什么样的人，我说应该是有familiy的人，同时又不太富裕，所以想给家人留财产。然后接下来就是大概就是死亡率多少时break even，如果你答的很快的话，就会不断深入，比如怎么提高profit啊之类的，我基本说了最直观的方法是提高premium，但是这样可能导致客户数目减少，所以我们要找到balance的点，然后他就问在实际应用中怎么找这个balance点，我说可以发送调查问卷，看有多少客户接受新的premium，然后根据这个比例判断。
+第二个是Role play，还是飞机晚点问题，但午饭的时候我问那个人他说可能马上就换了。这个问题我因为见过，所以以为自己应该挺顺利的，但是当我说到有multicollinerity的variable应该从model里移除时，那个面试官一直在追问我为什么，然后我说correlation会导致variance增加，p-value不显著等等，bias estimate【难道不会影响estimate么？】，而且这些variables are telling same story。但是感觉面试官对这个回答并不满意，一直在追问，但是我学过的都是vif>5就移除啊。。。不是这样么？难道我要用PCA？但这个模型显然并不需要用PCA消除correlation这么麻烦啊。。。有什么别的方法么？求教。
+
+我觉得第二个题的他想听到的应该是，存在multicollinerity会影响到我们对model的interpretation。
+楼主可以看看
+https://onlinecourses.science.psu.edu/stat501/print/book/export/html/346
+Effect #1和#2
+
+第三个又是Case Study，这个比较简单，关于ATM机的，也是break even，然后画了曲线。不过我第一次听错数字了。。。。真是对自己无语。
+第四个Behavior问题是tell me a time系列，两个面试官是中国人，在面完前三轮之后看到中国人有一种松了一口气的感觉，他们人也很nice，其实所有面试官都很nice，所以我感觉更难过了。。。呜呜呜。。。
+午饭后和director面最后一轮technical，他上来就说这是今天最简单的面试了，他说你可以把笔放下，我们聊聊天就好了，我天真的信了。然后他就说我们聊聊你的project吧，我就把实习的project说了，他问了model，我说我做的是Random Forest部分，他说那你对Random Forest了解多少。。。。然后。。。然后我就装逼了啊！！！我说我以前build model from scratch过，然后他就感兴趣了，他说那你说一下大概的流程，我就又把笔拿起来了啊！！！然后我就说错了，第一步应该是bagging我说成subsampling了。。。director同学很想纠正我这块来着，但是我完全没意识到啊！我就继续说下一步怎么建decision tree了，吧啦吧啦讲大概怎么算information gain，怎么分叉，怎么得出最后的结果，这时候director又尝试拯救我一下，问我这些decision tree会用怎样的不同，但我还是没有意识到。。。然后他决定再给我一次机会，问我还scratch啥model来着，我就说adaboost，这个说对了，然后就轮到我问他问题了。
+
+2： 问简历上的项目，顺着项目问了些算法，比如RF和GBDT的区别，哪个更容易over-fitting, 为什么
+3： 怎么预测用户是否会点击一个广告？如果有A, B两广告，点A一次平均盈利50，点B平均盈利60， 怎么去判断哪个盈利多？
+4： 怎么对数据流提取特征？ 如果10分钟内有1T的数据，怎么取提取特征建模，用什么模型什么技术比较好?
+
+现在开始进入正题，面试是聊一个credit card churn model，地里有人分享过，我就补充下细节：
+
+      1. Feature engineering，比如从start date算出tenure 等等
+      2. Missing value
+      3. 用什么模型，为什么
+      4. 现在数据量加大，怎么办？spark。如果你要选，用RSpark还是PySpark？为什么
+      5. 现在模型output出来，一个credit limit 使用率0%的用户和使用率95%的用户都很危险，都很可能马上就关掉信用卡，你会怎么处理？我回答churn model是起点，一般marketing department会根据churn model的结果设计retention program。对于这两类危险用户，需要设计不同的incentive plan。
+             1）使用率0%的用户，基本上很难挽回。
+             2）使用率95%的用户大概率可以挽回，降低利率，增加cashback等等。。。
+             3）可以根据测试结果再搞个uplift model，看哪些high churn users可以挽回的，着重施加treatment。
 
 
 ## Algorithm Study
