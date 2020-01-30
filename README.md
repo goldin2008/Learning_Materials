@@ -3,11 +3,12 @@ Learning Materials for ML, DL, DS
 
 # Udacity-Materials
 ```
-Data Streaming
-Data Engineering
-Data Scientist
-Cloud DevOps Developer
-Cloud Developer
+12/19/2019
+Data Streaming 2 months 02/19/2020
+Data Engineer 5 months 05/19/2020
+Data Scientist 4 months 04/19/2020
+Cloud DevOps Developer 4 months 04/19/2020
+Cloud Developer 4 months 04/19/2020
 ```
 
 
