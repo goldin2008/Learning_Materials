@@ -11,7 +11,6 @@ Data Scientist 4 months 04/19/2020
 Cloud DevOps Developer 4 months 04/19/2020
 Cloud Developer 4 months 04/19/2020
 
-
 ```
 
 
