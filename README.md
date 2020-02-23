@@ -11,7 +11,6 @@ Cloud Developer 4 months 04/19/2020
 Data Scientist 4 months 04/19/2020
 Data Engineer 5 months 05/19/2020
 
-
 ```
 
 
