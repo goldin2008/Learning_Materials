@@ -54,8 +54,7 @@ Step6：evaluation
 
 The last but not the least: 每一步都尽快和面试官确认，move on，不耽误时间。想要在45分钟之内把面试官讲的心服口服，这么多个component，每个只有很少的时间。
 
-
-本帖最后由 大队管理员 于 2019-11-26 12:02 编辑
+我偏向于将evaluation metrics分为两类：general metrics (AUC-ROC, accuracy, precision, confusion matrix...)，以及domain-specific metrics (online CTR, offline CTR...)。
 
 
 地里的面经很多，但是很少有人写总结，尤其是Machine learning这一块。我根据自己面试的经验，总结了一下ML design的面试中，解题的思路，抛砖引玉，分享给大家。
