@@ -87,10 +87,20 @@ The last but not the least: 每一步都尽快和面试官确认，move on，不
 8. -        Stress test。碰到面试官很不友善的时候，没法develop一个很好的答案，要坚持the principle of problem solving: Break down problem to solvable subtasks. 比如被问到这个问题“你deliver了一个ML的产品/系统，用户使用以后，汇报系统的accuracy 远低于你自己test 的accuracy，哪些方面可能出问题了？要求不能看log。” 从problem solving的角度来看，整个系统有两个element：你的ML系统，用户的application。每个element都可能出问题。那么把大问题break down成两个element自己的问题+element之间衔接的问题，就是一个很好的答案。两个element自己的问题包括：产品的问题(overfitting，training data coverage，etc)，用户的application的问题(使用产品的domain和develop 产品的domain不一致， 使用方数据的distribution和training data不一致，etc)，用户的问题(没有按照设计的方式来使用系统，measure的方法不对，使用了和开发方不一样的metrics，etc)。
 
 ### Spark
+
+Lazy Evaluation - Key Points
+Lazy evaluation means an expression is not evaluated until a certain condition is met. In Spark, this is when an action triggers the DAG. Transformations are lazy and do not execute immediately. Spark adds them to a DAG of computation, and only when the driver requests some data (with an action function) does this DAG actually get executed.
+
+These are some advantages of lazy evaluation:
+
+Users can organize their Apache Spark program into smaller operations. It reduces the number of passes on data by grouping operations.
+Saves resources by not executing every step. It saves the network trips between driver and cluster. This also saves time.
+
 Explain in detail how lazy evaluation is advantageous in Spark. What are some use cases that you can think of to take best advantage of lazy evaluation in Spark?
 
 When you know your Spark job has many actions. This means that your Spark job will already have tons of network and machine shuffles due to existing action functions and this will materialize your intermediate datasets every time you execute action functions. Evidently, this will spike your GC (garbage collection) cost. In this case, you want to minimize network and machine shuffles using as much transformation functions as possible to reduce network and machine shuffles.
 Let’s say you have two tables - one table has the information about the 50 states in the US, like state in two letters (NY, CA, ..) and all the state’s zip codes, and the other table has all the residents in the US, with a column of which zip code they live in. Say you want to join two tables, and query only the people in California. In SQL, you would have to join them together, and then filter on “state = ‘CA’”. But in Spark, having lazy evaluation helps - since that one table is relatively small, Spark can switch the order of operations so that the smaller subset of dataframes is filtered first and then joined.
+
 
 
 ### Data Engineer
