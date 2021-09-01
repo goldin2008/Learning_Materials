@@ -59,7 +59,7 @@ Elements of Causal Inference: Foundations and Learning Algorithms, MIT Press, 20
 https://library.oapen.org/bitstream/handle/20.500.12657/26040/11283.pdf
 
 ​
-Gaussian processes (recommended by James Hensman) :
+`Gaussian processes (recommended by James Hensman) :`
 
 Pattern Recognition and Machine Learning, Introduction to GPs, pages 303 - 320.
 https://www.microsoft.com/en-us/research/people/cmbishop/prml-book/
@@ -68,7 +68,7 @@ Gaussian Processes for Machine Learning (free download)
 http://www.gaussianprocess.org/gpml/
 
 ​
-Neural models of sequence data, and EHR (recommended by Reza Khorshidi) 
+`Neural models of sequence data, and EHR (recommended by Reza Khorshidi)`
 
 Attention Is All You Need
 https://arxiv.org/abs/1706.03762
@@ -82,7 +82,7 @@ RETAIN: An Interpretable Predictive Model for Healthcare using Reverse Time Atte
 https://arxiv.org/abs/1608.05745
 
 ​
-Computational Pathology (recommended by Lea Goetz) 
+`Computational Pathology (recommended by Lea Goetz)` 
 
 Computational histopathology reviews:
 
@@ -93,7 +93,7 @@ Deep learning in histopathology: the path to the clinic
 https://www.nature.com/articles/s41591-021-01343-4
 
 ​
-Computational histopathology papers covered in Lea Goetz's lecture:
+`Computational histopathology papers covered in Lea Goetz's lecture:`
 
 Clinical-grade computational pathology using weakly supervised deep learning on whole slide images.
 https://www.nature.com/articles/s41591-019-0508-1
@@ -120,7 +120,7 @@ Data-efficient and weakly supervised computational pathology on whole-slide imag
 https://github.com/mahmoodlab/CLAM
 
 ​
-Multiple-Instance Learning:
+`Multiple-Instance Learning:`
 
 Multiple-Instance Learning for Medical Image and Video Analysis
 https://pubmed.ncbi.nlm.nih.gov/28092576
@@ -138,7 +138,7 @@ Contrastive Learning: A Simple Framework for Contrastive Learning of Visual Repr
 https://arxiv.org/abs/2002.05709
 
 ​
-Causal ML, Interpretability in ML:
+`Causal ML, Interpretability in ML:`
 
 AutoML: powering the new human-machine learning ecosystem
 https://www.vanderschaar-lab.com/automl-powering-the-new-human-machine-learning-ecosystem/
@@ -159,7 +159,7 @@ Estimating Counterfactual Treatment Outcomes over Time through Adversarially Bal
 https://openreview.net/pdf?id=BJg866NFvB
 
 ​
-ML for Climate Action (recommended by David Rolnick) 
+`ML for Climate Action (recommended by David Rolnick)` 
 
 "Our World in Data: Emissions by Sector" - context on the sources of GHG emissions
 https://ourworldindata.org/emissions-by-sector
@@ -171,7 +171,7 @@ https://www.greenpeace.org/usa/reports/oil-in-the-cloud/
 https://arxiv.org/abs/1906.05433
 
 ​
-Sentiment/Opinion Mining (recommended by Yulan He) 
+`Sentiment/Opinion Mining (recommended by Yulan He)` 
 
 Aspect-Based Sentiment Analysis
 
