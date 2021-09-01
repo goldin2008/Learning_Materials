@@ -1,6 +1,6 @@
 ## OXML
 
-ML Fundamentals (recommended by Haitham Ammar)
+`ML Fundamentals (recommended by Haitham Ammar)`
 
 Gaussian Process for Machine Learning
 http://www.gaussianprocess.org/gpml/chapters/RW.pdf
