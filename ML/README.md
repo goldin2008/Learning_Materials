@@ -9,7 +9,6 @@ https://ieeexplore.ieee.org/document/7352306
 
 High-Dimensional Bayesian Optimisation with Variational Autoencoders and Deep Metric Learning
 https://arxiv.org/abs/2106.03609
-
 ​
 `Representation Learning (recommended by Yoshua Bengio)`
 
