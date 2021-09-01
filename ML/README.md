@@ -1,7 +1,6 @@
 ## OXML
 
 `ML Fundamentals (recommended by Haitham Ammar)`
-
 Gaussian Process for Machine Learning
 http://www.gaussianprocess.org/gpml/chapters/RW.pdf
 
@@ -11,8 +10,7 @@ https://ieeexplore.ieee.org/document/7352306
 High-Dimensional Bayesian Optimisation with Variational Autoencoders and Deep Metric Learning
 https://arxiv.org/abs/2106.03609
 
-​
-Representation Learning (recommended by Yoshua Bengio)
+`Representation Learning (recommended by Yoshua Bengio)`
 
 Inductive Biases for Deep Learning of Higher-Level Cognition
 https://arxiv.org/abs/2011.15091
