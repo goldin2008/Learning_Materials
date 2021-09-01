@@ -1,5 +1,5 @@
 ## OXML
-
+​
 `ML Fundamentals (recommended by Haitham Ammar)`
 Gaussian Process for Machine Learning
 http://www.gaussianprocess.org/gpml/chapters/RW.pdf
@@ -9,7 +9,7 @@ https://ieeexplore.ieee.org/document/7352306
 
 High-Dimensional Bayesian Optimisation with Variational Autoencoders and Deep Metric Learning
 https://arxiv.org/abs/2106.03609
-
+​
 `Representation Learning (recommended by Yoshua Bengio)`
 
 Inductive Biases for Deep Learning of Higher-Level Cognition
@@ -29,9 +29,8 @@ https://openreview.net/forum?id=xfeO8f9gLT0
 
 Invariance Principle Meets Information Bottleneck for Out-of-Distribution Generalization
 https://arxiv.org/abs/2106.06607
-
 ​
-Bayesian ML:
+`Bayesian ML:`
 
 Variational Inference: A Review for Statisticians
 https://arxiv.org/abs/1601.00670
@@ -44,9 +43,8 @@ https://arxiv.org/pdf/1606.05908.pdf
 
 Auto-Encoding Variational Bayes
 https://arxiv.org/pdf/1312.6114.pdf
-
 ​
-Probabilistic causal ML:
+`Probabilistic causal ML:`
 
 Geometric Deep Learning: Grids, Groups, Graphs, Geodesics, and Gauges
 https://arxiv.org/abs/2104.13478
